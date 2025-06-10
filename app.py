@@ -29,7 +29,7 @@ st.sidebar.title("📊 Navigasi Dashboard")
 selected = st.sidebar.radio("Menu", ["Home", "WordCloud", "Tabel Review"])
 
 # Ringkasan data
-if selected == "🏠 Ringkasan":
+if selected == "Home":
     st.title("📊 Ringkasan Sentimen Ulasan TIX ID")
 
     sentiment_counts = df['sentiment'].value_counts().reindex(['positif', 'netral', 'negatif'])
@@ -61,7 +61,7 @@ if selected == "🏠 Ringkasan":
     """)
 
 # WordCloud
-elif selected == "☁️ WordCloud":
+elif selected == "WordCloud":
     st.title("☁️ WordCloud per Sentimen")
     sentimen = st.radio("Pilih sentimen:", ["positif", "netral", "negatif"], horizontal=True)
     teks = " ".join(df[df['sentiment'] == sentimen]['clean_content'].dropna())
@@ -77,7 +77,7 @@ elif selected == "☁️ WordCloud":
         st.warning("Tidak ada data untuk sentimen ini.")
 
 # Tabel review
-elif selected == "📄 Tabel Review":
+elif selected == "Tabel Review":
     st.title("📄 Tabel Ulasan")
     jumlah = st.slider("Tampilkan berapa ulasan?", 5, 100, 10)
     st.dataframe(df[['clean_content', 'sentiment']].rename(columns={'clean_content': 'Ulasan'}).head(jumlah),
