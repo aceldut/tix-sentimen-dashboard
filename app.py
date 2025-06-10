@@ -13,7 +13,7 @@ model = joblib.load("svm_model.pkl")
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
 # Load dataset
-df = pd.read_csv("TIX-ID_2023-2025_Bersih.csv")
+df = pd.read_csv("TIX-ID_2023-2024_Bersih.csv")
 
 # Validasi kolom
 if 'clean_content' not in df.columns:
@@ -30,7 +30,7 @@ selected = st.sidebar.radio("Menu", ["Home", "WordCloud", "Tabel Review"])
 
 # Ringkasan data
 if selected == "Home":
-    st.title("Ringkasan Sentimen Data Ulasan TIX ID 2023 - 2025")
+    st.title("Ringkasan Sentimen Data Ulasan TIX ID 2023 - 2024")
 
     sentiment_counts = df['sentiment'].value_counts().reindex(['positif', 'netral', 'negatif'])
     total = sentiment_counts.sum()
