@@ -30,7 +30,7 @@ selected = st.sidebar.radio("Menu", ["Home", "WordCloud", "Tabel Review"])
 
 # Ringkasan data
 if selected == "Home":
-    st.title("📊 Ringkasan Sentimen Ulasan TIX ID")
+    st.title("Ringkasan Sentimen Data Ulasan TIX ID 2023 - 2025")
 
     sentiment_counts = df['sentiment'].value_counts().reindex(['positif', 'netral', 'negatif'])
     total = sentiment_counts.sum()
