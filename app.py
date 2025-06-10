@@ -38,7 +38,7 @@ if selected == "Home":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("Distribusi Sentimen")
+        st.subheader("Jumlah Sentimen")
         fig, ax = plt.subplots()
         sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, palette="Set2", ax=ax)
         ax.set_ylabel("Jumlah")
@@ -46,7 +46,7 @@ if selected == "Home":
         st.pyplot(fig)
 
     with col2:
-        st.subheader("Komposisi Sentimen")
+        st.subheader("Persentase Sentimen")
         fig2, ax2 = plt.subplots()
         ax2.pie(sentiment_counts, labels=sentiment_counts.index, autopct='%1.1f%%', startangle=90,
                 colors=sns.color_palette("Set2"))
