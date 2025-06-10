@@ -79,6 +79,16 @@ elif selected == "WordCloud":
 # Tabel review
 elif selected == "Tabel Review":
     st.title("📄 Tabel Ulasan")
-    jumlah = st.slider("Tampilkan berapa ulasan?", 5, 100, 10)
-    st.dataframe(df[['clean_content', 'sentiment']].rename(columns={'clean_content': 'Ulasan'}).head(jumlah),
-                 use_container_width=True)
+
+    total_rows = df.shape[0]
+    page_size = st.selectbox("Jumlah baris per halaman:", [10, 25, 50, 100], index=1)
+    page = st.number_input("Halaman ke:", min_value=1, max_value=(total_rows // page_size) + 1, step=1)
+
+    start_idx = (page - 1) * page_size
+    end_idx = start_idx + page_size
+
+    st.dataframe(
+        df[['clean_content', 'sentiment']].rename(columns={'clean_content': 'Ulasan'}).iloc[start_idx:end_idx],
+        use_container_width=True
+    )
+
